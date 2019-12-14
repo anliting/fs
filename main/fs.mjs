@@ -33,7 +33,7 @@ async function mkdirFsync(p){
 }
 async function renameFsync(a,b){
     await fs.promises.rename(a,b)
-    await fsyncWithParentByPath(b)
+    await fsyncByPath(a)
 }
 export default{
     createReadStream,

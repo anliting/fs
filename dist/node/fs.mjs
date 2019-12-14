@@ -6,7 +6,7 @@ async function createReadStream(p){
     try{
         fh=await fs$1.promises.open(p,'r');
     }catch(e){
-        throw['ENOENT'].includes(e.code)?createReadStream.badPath:e
+        throw ['ENOENT'].includes(e.code)?createReadStream.badPath:e
     }
     if(!(await fh.stat()).isFile()){
         fh.close();
@@ -34,7 +34,7 @@ async function mkdirFsync(p){
 }
 async function renameFsync(a,b){
     await fs$1.promises.rename(a,b);
-    await fsyncWithParentByPath(b);
+    await fsyncByPath(a);
 }
 var fs = {
     createReadStream,
